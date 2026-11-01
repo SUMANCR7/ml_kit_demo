@@ -16,6 +16,8 @@ import '../../features/text/text_screen.dart';
 //import '../../features/tflite_classifier/providers/tflite_provider.dart';
 //import '../../features/tflite_classifier/ui/tflite_screen.dart';
 //import '../services/image_picker_service.dart';
+import '../../features/tflite_classifier/providers/tflite_provider.dart';
+import '../../features/tflite_classifier/ui/tflite_screen.dart';
 import '../services/image_picker_services.dart';
 
 GoRouter createAppRouter(ImagePickerService picker) => GoRouter(
@@ -43,12 +45,12 @@ GoRouter createAppRouter(ImagePickerService picker) => GoRouter(
         child: const FaceScreen(),
       ),
     ),
-    // GoRoute(
-    //   path: '/tflite-classifier',
-    //   builder: (context, state) => ChangeNotifierProvider(
-    //     create: (_) => TfliteProvider(picker)..initModel(),
-    //     child: const TfliteScreen(),
-    //   ),
-    // ),
+    GoRoute(
+      path: '/tflite-classifier',
+      builder: (context, state) => ChangeNotifierProvider(
+        create: (_) => TfliteProvider(picker)..initModel(),
+        child: const TfliteScreen(),
+      ),
+    ),
   ],
 );
